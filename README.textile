@@ -1,0 +1,22 @@
+h1. MoneyWell
+
+MoneyWell is a fantastic Application: http://nothirst.com/moneywell/
+It allows you to manage your finances with an envelope budgeting transaction and cash flow management. I like it an use it and sometimes I want a tad more.
+
+MoneyWell uses SQLite to store the data and actually it's "*.moneywell" file which stores all of the records and such is a SQLite database. Which you can easily inspect.
+
+
+h2. Label Recipt Attachments
+
+MoneyWell can attache recipt files (jpg, gif, png, pdf) to any transaction. It does this (as of version 1.4.10) by saving a file reference in the transaction table of the database. 
+
+Because MoneyWell does not touch or move the receipts you have to keep on top of where your receipts are. I scan all of my paper receipts using Neat Recipts, which I highly recomend. I put my receipts inside a folder by month. And then I try and link every receipt to a MoneyWell transaction.
+
+The script in this package called "moneyWell_recipt_attach.rb" will need to be opened and edited by you to match your file paths and such. The script needs to know these two things:
+
+# Where your .moneywell file is (I make a copy for safty).
+# The base folder of where your recipts are.
+
+The script opens up the moneywell file, steps through every transaction and for every transaction that has an attachement it changes the OS X Finder "label" to grey. So, you run this script from the command line and it changes all of your recipts to a grey color allowing you to see what recipts are attached to MoneyWell and what are not.
+
+That "base folder where your receipts are" is also used. If an attached receipt is not in that base folder the script spits out some info about the transaction allowing you to look it up, move the file, and re-attache it to MoneyWell.

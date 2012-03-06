@@ -8,7 +8,7 @@ require 'find'
 #include Appscript
 
 # get location of moneywell file
-moneyWelldB = "/Users/lyle/Documents/banking 2.moneywell"
+moneyWelldB = "/Users/lyle/Documents/banking.moneywell"
 
 # get location of directory to check in
 reciptDirectory = "/Users/lyle/Documents/Personal/Finacial/Recipts/2009/2009-05 May/"
@@ -46,11 +46,12 @@ rows.each do |entry|
     # print displayRecord(entry)
     
     print "."
-    `osascript -e 'tell application "Finder"' -e 'set daFile to "#{receipt}" as POSIX file as alias' -e 'set the label index of daFile to 7' -e 'end tell'`
+    `osascript -e 'tell application "Finder"' -e 'set daFile to "#{receipt}" as POSIX file as alias' -e 'set the label index of daFile to 6' -e 'end tell'`
     
     #exit
   else
     # if the receipt is in the wrong location we get a little warning letting us know they we might want to pudate the record and such.
+    `osascript -e 'tell application "Finder"' -e 'set daFile to "#{receipt}" as POSIX file as alias' -e 'set the label index of daFile to 2' -e 'end tell'`
     print "\nWARNING this entry is in the wrong place:" + displayRecord(entry)
   end
 end
